@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\def\import#1 {\input ./tex/#1 }
+
+\import packages
+\import registers
+\import macros
+
+\begin{document}
+
+\import user-input
+
+\includeAllPages{\bookName.pdf}
+
+\setBookmark{front-matter}
+\setBookmark{chapters}
+\setBookmark{appendix}
+
+\end{document}

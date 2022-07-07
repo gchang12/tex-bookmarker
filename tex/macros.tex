@@ -1,0 +1,32 @@
+\def\makeBookmark#1,#2\empty{\bookmark[page=#1]{\titlePrefix#2}}
+\def\includeAllPages#1{\includepdf[pages=-]{src/#1}}
+
+% Bookmark front-matter (no prefixes)
+\def\titlePrefix{}
+
+\def\setPrefix{
+    % Bookmark chapters (index=1)
+    \ifnum\bookLevel=1
+        \def\titlePrefix{\the\chapterNo: }
+    % Bookmark appendices (index=\char97+k)
+    \else
+        % Unmute once the appendix indexing problem is resolved
+        % \advance\chapterNo by 64
+        %\def\titlePrefix{A \the\chapterNo: }
+        \def\titlePrefix{}
+    \fi
+}
+
+\def\setBookmark#1{
+    \openin\chapterRead #1/\bookName.csv
+    \loop
+    \read\chapterRead to \chapterName
+    \unless\ifeof\chapterRead
+    \expandafter\makeBookmark\chapterName\empty
+    \advance\chapterNo by 1
+    \repeat
+    \closein\chapterRead
+    \advance\bookLevel by 1
+    \chapterNo=1
+    \setPrefix
+}
