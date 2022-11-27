@@ -21,10 +21,10 @@
 \def\setBookmark#1{
     \openin\chapterRead #1/\bookName.csv
     \loop
-    \read\chapterRead to \chapterName
-    \unless\ifeof\chapterRead
-    \expandafter\makeBookmark\chapterName\empty
-    \advance\chapterNo by 1
+        \read\chapterRead to \chapterName
+        \unless\ifeof\chapterRead
+            \expandafter\makeBookmark\chapterName\empty
+            \advance\chapterNo by 1
     \repeat
     \closein\chapterRead
     \advance\bookLevel by 1
