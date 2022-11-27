@@ -1,8 +1,12 @@
-\newcount\chapterNo
+\newcount\chapterNo % To track chapter number
 \chapterNo=1
-\newread\chapterRead
 
-\newread\termRead
-\newcount\bookLevel
+\newread\chapterRead % To read various csv files containing index data
 
-\bookLevel=0 % 0 if front-matter, 1 if chapter, 2 if appendix
+\newread\termRead % To read name of file
+
+\newcount\bookLevel % 0 if front-matter, 1 if chapter, 2 if appendix
+\bookLevel=0
+
+\newcount\appendixLevel
+\appendixLevel 64

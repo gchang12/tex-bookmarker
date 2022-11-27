@@ -1,3 +1,8 @@
+% The appendix varies from book to book
+% - Learn how to create bookmark appendices of the form (index=\char97+k)
+\def\appendixPrefix{}
+
+% The worker macros
 \def\makeBookmark#1,#2\empty{\bookmark[page=#1]{\titlePrefix#2}}
 \def\includeAllPages#1{\includepdf[pages=-]{src/#1}}
 
@@ -7,13 +12,9 @@
 \def\setPrefix{
     % Bookmark chapters (index=1)
     \ifnum\bookLevel=1
-        \def\titlePrefix{\the\chapterNo: }
-    % Bookmark appendices (index=\char97+k)
+        \def\titlePrefix{\the\chapterNo\ }
     \else
-        % Unmute once the appendix indexing problem is resolved
-        % \advance\chapterNo by 64
-        %\def\titlePrefix{A \the\chapterNo: }
-        \def\titlePrefix{}
+        \def\titlePrefix{\appendixPrefix}
     \fi
 }
 

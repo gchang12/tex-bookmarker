@@ -1,14 +1,17 @@
 \documentclass{article}
 
+% User declares the name of the pdf and all its csv files here
+\def\bookName{preview}
+
+% Shortcut macro
 \def\import#1 {\input ./tex/#1 }
 
+% Import TeX macros here
 \import packages
 \import registers
 \import macros
 
 \begin{document}
-
-\import user-input
 
 \includeAllPages{\bookName.pdf}
 
